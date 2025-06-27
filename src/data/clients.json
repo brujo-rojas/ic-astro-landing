@@ -1,0 +1,76 @@
+{
+    "clients": [
+        {
+            "id": "1",
+            "name": "Luis Felipe Edwards",
+            "logo": "/uploads/clients/luis-felipe-edwards.jpg",
+            "url": "https://www.luisfelipeedwards.cl"
+        },
+        {
+            "id": "2",
+            "name": "Montes Wines",
+            "logo": "/uploads/clients/montes.jpg",
+            "url": "https://www.monteswines.cl"
+        },
+        {
+            "id": "3",
+            "name": "Viña San Pedro",
+            "logo": "/uploads/clients/vina-san-pedro.jpg",
+            "url": "https://www.vinasanpedro.com"
+        },
+        {
+            "id": "4",
+            "name": "Veramonte",
+            "logo": "/uploads/clients/veramonte.jpg",
+            "url": "https://www.veramonte.cl"
+        },
+        {
+            "id": "5",
+            "name": "Viña Undurraga",
+            "logo": "/uploads/clients/undurraga.jpg",
+            "url": "https://www.undurraga.cl"
+        },
+        {
+            "id": "6",
+            "name": "Viña Garcés Silva",
+            "logo": "/uploads/clients/garces-silva.jpg",
+            "url": "https://www.garcessilva.cl"
+        },
+        {
+            "id": "7",
+            "name": "Viña Tabali",
+            "logo": "/uploads/clients/tabali.png",
+            "url": "https://www.vinatabali.cl"
+        },
+        {
+            "id": "8",
+            "name": "Viña Correa Albano",
+            "logo": "/uploads/clients/correaalbano.png",
+            "url": "https://www.correalbano.cl"
+        },
+        {
+            "id": "9",
+            "name": "Viña La Rosa",
+            "logo": "/uploads/clients/vinalarosa.png",
+            "url": "https://www.vinalarosa.cl"
+        },
+        {
+            "id": "10",
+            "name": "Ucuquer Wines",
+            "logo": "/uploads/clients/ucuquer.png",
+            "url": "https://www.ucuquer.cl"
+        },
+        {
+            "id": "11",
+            "name": "Via Wines",
+            "logo": "/uploads/clients/via-wines.png",
+            "url": "https://www.viawines.cl"
+        },
+        {
+            "id": "12",
+            "name": "Cousiño Macul",
+            "logo": "/uploads/clients/cousino-macul.jpg",
+            "url": "https://www.cousinomacul.cl"
+        }
+    ]
+}

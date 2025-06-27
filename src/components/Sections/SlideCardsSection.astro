@@ -1,0 +1,133 @@
+---
+//props
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  items: {
+    id: string;
+    logo: string;
+    name?: string;
+    url?: string;
+  }[];
+}
+
+const { title = "title", subtitle = "subtitle", items = [] } = Astro.props;
+
+const Element = items[0].url ? "a" : "div";
+---
+
+<section class="py-8 bg-white">
+  <div class="flex flex-col items-center mb-8">
+    <h2
+      class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-500 tracking-tight text-center"
+    >
+      {title}
+    </h2>
+    {subtitle && <h3 class="text-gray-400 text-xl">{subtitle}</h3>}
+  </div>
+
+  <div class="slider" style={`--slide-count: ${items.length};`}>
+    <div class="slide-track">
+      {
+        [...items, ...items].map((item, index) => (
+          <div class="slide" aria-label={item.name}>
+            <Element href={item.url} target="_blank">
+              <img src={item.logo} height="100" width="250" alt="" />
+            </Element>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --slide-width: 250px;
+    --slide-height: 200px;
+    --slide-count: 12;
+  }
+
+  @-webkit-keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-1 * var(--slide-width) * var(--slide-count)));
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-1 * var(--slide-width) * var(--slide-count)));
+    }
+  }
+  .slider {
+    height: var(--slide-height);
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+  }
+  .slider::before,
+  .slider::after {
+    background: linear-gradient(
+      to right,
+      white 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    content: "";
+    height: var(--slide-height);
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+  }
+  .slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+  .slider::before {
+    left: 0;
+    top: 0;
+  }
+  .slider .slide-track {
+    -webkit-animation: scroll 40s linear infinite;
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: calc(var(--slide-width) * (var(--slide-count) * 2));
+    gap: 20px;
+  }
+
+  .slider:hover .slide-track {
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+  }
+
+  .slider .slide {
+    height: var(--slide-height);
+    width: var(--slide-width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slider .slide a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    line-height: normal;
+  }
+
+  .slider .slide img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+</style>

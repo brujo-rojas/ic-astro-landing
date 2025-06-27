@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHeader from "../../components/Sections/PageHeader.astro";
+import WideImage from "../../components/Sections/WideImage.astro";
 import Card from "../../components/UI/Card.astro";
 import { getCollection } from "astro:content";
 import { formatDate } from "../../utils/dateUtils";
@@ -23,7 +23,7 @@ const tags = [...new Set(posts.flatMap(post => post.data.tags))];
   title="Blog - Church Name"
   description="Read our latest articles, devotionals, and updates from our church community."
 >
-  <PageHeader 
+  <WideImage 
     title="Blog" 
     subtitle="Insights, devotionals, and updates from our church community"
     backgroundImage="/uploads/blog-header-bg.webp"

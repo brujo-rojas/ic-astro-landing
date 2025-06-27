@@ -17,16 +17,17 @@ const {
 ---
 
 <section
-  class="relative min-h-[50vh] flex items-center bg-cover pt-30 blur-xs"
-  style={`background-image: url(${backgroundImage}); 
+  class="relative min-h-[200px] h-[50vh] flex items-center bg-cover pt-30"
+  style={`
+    background-image: linear-gradient(to right , rgba(27,94,32,0.8) , rgba(27,94,32,0.6) , rgba(27, 94, 32, 0.4), transparent, transparent, transparent), url(${backgroundImage}); ;
     background-position: center 70%;
   `}
 >
   <div
     class="absolute top-0 left-0 w-full h-full z-1"
     style={`
-    mask: linear-gradient(black,black, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25));
-    backdrop-filter: blur(32px);
+    mask: linear-gradient(to right, black, black, rgba(0, 0, 0, 0.5), transparent, transparent);
+    backdrop-filter: blur(128px) saturate(1.25);
     `}
   >
   </div>

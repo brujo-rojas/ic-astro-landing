@@ -1,7 +1,7 @@
 ---
 export const layout = "../layouts/BaseLayout.astro";
 
-import PageHeader from "../components/Sections/PageHeader.astro";
+import WideImage from "../components/Sections/WideImage.astro";
 import { formatDate } from "../utils/dateUtils";
 
 export interface Props {
@@ -43,7 +43,7 @@ const formattedDate = date ? formatDate(date) : null;
 
 <!-- SEO props diteruskan oleh BaseLayout -->
 <!-- Header & Footer hanya dipanggil sekali oleh BaseLayout -->
-<PageHeader title={title} />
+<WideImage title={title} />
 
 <main class="container py-8">
   <div class="mx-auto max-w-3xl">
