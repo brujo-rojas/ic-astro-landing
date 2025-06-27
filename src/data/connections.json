@@ -1,0 +1,64 @@
+{
+    "connections": [
+        {
+            "id": "1",
+            "name": "Dropcontrol",
+            "logo": "/uploads/connections/dropcontrol.png"
+        },
+        {
+            "id": "2",
+            "name": "Talgil",
+            "logo": "/uploads/connections/talgil.png"
+        },
+        {
+            "id": "3",
+            "name": "Agronic",
+            "logo": "/uploads/connections/agronic.png"
+        },
+        {
+            "id": "4",
+            "name": "Imetos",
+            "logo": "/uploads/connections/imetos.webp"
+        },
+        {
+            "id": "5",
+            "name": "Weatherlink",
+            "logo": "/uploads/connections/davis.jpg"
+        },
+        {
+            "id": "6",
+            "name": "Zentracloud",
+            "logo": "/uploads/connections/zentra.png"
+        },
+        {
+            "id": "8",
+            "name": "Sentinel Hub",
+            "logo": "/uploads/connections/sentinel.png"
+        },
+        {
+            "id": "9",
+            "name": "Weather Underground",
+            "logo": "/uploads/connections/wunderground.png"
+        },
+        {
+            "id": "10",
+            "name": "Agroclima",
+            "logo": "/uploads/connections/agroclima.png"
+        },
+        {
+            "id": "11",
+            "name": "Ecowitt",
+            "logo": "/uploads/connections/ecowitt.png"
+        },
+        {
+            "id": "12",
+            "name": "Hobo",
+            "logo": "/uploads/connections/hobo.png"
+        },
+        {
+            "id": "13",
+            "name": "Muchos más",
+            "label": "Y muchos más"
+        }
+    ]
+}

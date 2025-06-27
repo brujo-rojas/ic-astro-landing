@@ -4,9 +4,14 @@ import HeroSection from "../components/Sections/HeroSection.astro";
 import SingleImageSection from "../components/Sections/SingleImageSection.astro";
 import SlideCardsSection from "../components/Sections/SlideCardsSection.astro";
 import CallToActionSection from "../components/Sections/CallToActionSection.astro";
-import data from "../data/clients.json";
+import GridCardsSection from "../components/Sections/GridCardsSection.astro";
 
-const clients = data.clients || [];
+import dataClients from "../data/clients.json";
+import dataConnections from "../data/connections.json";
+
+const clients = dataClients.clients || [];
+
+const conections = dataConnections.connections || [];
 ---
 
 <BaseLayout>
@@ -39,6 +44,12 @@ const clients = data.clients || [];
       <li>Dificultad para estandarizar procesos</li>
     </ul>
   </SingleImageSection>
+
+  <GridCardsSection
+    title="Conexiones"
+    subtitle="Conectamos tus datos"
+    items={conections}
+  />
 
   <SlideCardsSection
     title="Analizan Datos en Irricrops"
