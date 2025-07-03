@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname;
 
 <!-- Desktop Navigation -->
 <nav class="hidden lg:block">
-  <ul class="flex items-center space-x-6">
+  <ul class="flex items-center space-x-2">
     {
       navItems.map((item) => {
         const isActive =
@@ -30,8 +30,10 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={item.href}
-              class={`text-base font-medium transition-colors hover:text-primary-600 ${
-                isActive ? "text-primary-600" : "text-gray-700"
+              class={`text-base font-medium transition-colors px-4 py-2 rounded-full ${
+                isActive
+                  ? "bg-primary-500 text-white shadow font-semibold border border-primary-800"
+                  : "text-gray-700 hover:text-primary-600"
               }`}
               aria-current={isActive ? "page" : undefined}
             >

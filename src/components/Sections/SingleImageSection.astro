@@ -1,23 +1,40 @@
 ---
 export interface Props {
   image: string;
-  altImage: string;
+  altImage?: string;
+  bgImage?: string;
+  imageRight?: boolean;
 }
-const { image, altImage } = Astro.props;
+const {
+  image,
+  altImage = "Imagen ilustrativa",
+  bgImage,
+  imageRight = false,
+} = Astro.props;
 ---
 
-<section class="py-16 bg-gray-100">
-  <div class="container">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
+<section class="py-16 bg-gray-100 relative overflow-hidden">
+  {
+    bgImage && (
+      <div
+        class="absolute inset-0 w-full h-full bg-center bg-cover opacity-30 blur-sm z-0"
+        style={`background-image: url('${bgImage}');`}
+        aria-hidden="true"
+      />
+    )
+  }
+  <div class="container relative z-10">
+    <div
+      class={`flex flex-col md:flex-row gap-12 items-center ${imageRight ? "md:flex-row-reverse" : ""}`}
+    >
+      <div class="w-full md:w-1/2">
         <img
           src={image}
           alt={altImage}
-          class="rounded-lg shadow-lg object-cover w-full h-full"
+          class="rounded-lg shadow-lg object-cover w-full h-[250px] md:h-[350px]"
         />
       </div>
-
-      <div>
+      <div class="w-full md:w-1/2">
         <slot />
       </div>
     </div>

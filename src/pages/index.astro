@@ -5,13 +5,15 @@ import SingleImageSection from "../components/Sections/SingleImageSection.astro"
 import SlideCardsSection from "../components/Sections/SlideCardsSection.astro";
 import CallToActionSection from "../components/Sections/CallToActionSection.astro";
 import GridCardsSection from "../components/Sections/GridCardsSection.astro";
+import AeroCardsSection from "../components/Sections/AeroCardsSection.astro";
 
 import dataClients from "../data/clients.json";
 import dataConnections from "../data/connections.json";
+import CommentsSlideSection from "../components/Sections/CommentsSlideSection.astro";
 
 const clients = dataClients.clients || [];
 
-const conections = dataConnections.connections || [];
+const connections = dataConnections.connections || [];
 ---
 
 <BaseLayout>
@@ -19,36 +21,127 @@ const conections = dataConnections.connections || [];
     title="Irricrops"
     subtitle="Plataforma que centraliza y transforma datos"
     backgroundImage="/uploads/hero.jpg"
-    ctaText="Plan Your Visit"
-    ctaLink="/im-new"
-    secondaryCtaText="Watch Sermons"
-    secondaryCtaLink="/sermons"
-  />
+  >
+    <div class="flex flex-row gap-4">
+      <span
+        class="px-4 py-2 rounded-full bg-yellow-900 text-white font-semibold text-base shadow-xl"
+        >Suelo</span
+      >
+      <span
+        class="px-4 py-2 rounded-full bg-green-600 text-white font-semibold text-base shadow-xl"
+        >Planta</span
+      >
+      <span
+        class="px-4 py-2 rounded-full bg-blue-300 text-blue-900 font-semibold text-base shadow-xl"
+        >Ambiente</span
+      >
+    </div>
+  </HeroSection>
 
-  <SingleImageSection image="/uploads/img2.jpg" altImage="problema">
+  <SingleImageSection
+    bgImage="/uploads/dry1.jpg"
+    image="/uploads/stress.jpg"
+    altImage="problema"
+  >
     <h2
       class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-500 tracking-tight"
     >
-      El Problema
+      El desafío del riego moderno
     </h2>
     <p class="text-gray-600 mb-6 text-xl md:text-xl font-medium">
-      El costo de seguir el ritmo a tantos datos que genera el campo
+      Gestionar y aprovechar la gran cantidad de datos generados en el campo es
+      cada vez más complejo.
     </p>
     <ul
       class="list-disc list-inside space-y-3 mb-8 pl-2 text-green-800 text-lg md:text-xl font-semibold"
     >
-      <li>Información repartida en diferentes formatos</li>
-      <li>Poca trazabilidad de los datos</li>
-      <li>Alta carga operativa</li>
-      <li>Falta de integración entre sistemas</li>
-      <li>Dificultad para estandarizar procesos</li>
+      <li>Información dispersa en múltiples formatos</li>
+      <li>Baja trazabilidad y control de los datos</li>
+      <li>Elevada carga operativa para el equipo</li>
+      <li>Falta de integración entre plataformas</li>
+      <li>Dificultad para estandarizar y automatizar procesos</li>
     </ul>
   </SingleImageSection>
 
+  <SingleImageSection
+    image="/uploads/img2.jpg"
+    altImage="solución"
+    imageRight={true}
+  >
+    <h2
+      class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-500 tracking-tight"
+    >
+      Nuestra solución inteligente
+    </h2>
+    <p class="text-gray-600 mb-6 text-xl md:text-xl font-medium">
+      Un sistema digital que centraliza, analiza y transforma los datos de riego
+      en decisiones precisas y automáticas.
+    </p>
+    <ul
+      class="list-disc list-inside space-y-3 mb-8 pl-2 text-blue-800 text-lg md:text-xl font-semibold"
+    >
+      <li>Recolección automática de datos de campo</li>
+      <li>Aplicación de criterios agronómicos personalizados</li>
+      <li>Generación de recomendaciones de riego en tiempo real</li>
+      <li>Integración y organización eficiente de la información</li>
+      <li>
+        Adaptación del algoritmo a las necesidades de cada equipo agrícola
+      </li>
+    </ul>
+  </SingleImageSection>
+
+  <AeroCardsSection
+    title="Riego inteligente, decisiones precisas"
+    subtitle="Conecta tus equipos y plataformas para potenciar tu gestión"
+    items={connections}
+  >
+    <ul
+      class="list-disc list-inside space-y-2 pl-4 text-blue-700 text-base md:text-lg"
+    >
+      <li>
+        Centralizamos los datos de riego de todos tus sistemas y sensores en una
+        sola plataforma.
+      </li>
+      <li>
+        Configura programas personalizados, genera órdenes de trabajo y realiza
+        ajustes en tiempo real según tus necesidades.
+      </li>
+      <li>
+        Sube tus propios criterios de riego: nuestro sistema los analiza y
+        optimiza continuamente para mejorar tus resultados.
+      </li>
+    </ul>
+  </AeroCardsSection>
+
+  <CommentsSlideSection
+    title="Lo que dicen nuestros clientes"
+    subtitle="Empresas que confían en nosotros"
+    opinions={[
+      {
+        img: "/uploads/cliente1.jpg",
+        name: "Juan Pérez",
+        role: "Gerente de Operaciones",
+        text: "Irricrops ha transformado nuestra forma de gestionar el riego. Ahora tenemos todo centralizado y podemos tomar decisiones más informadas.",
+      },
+      {
+        img: "/uploads/cliente2.jpg",
+        name: "Ana Gómez",
+        role: "Ingeniera Agrónoma",
+        text: "La integración de datos ha sido clave para optimizar nuestros procesos. La plataforma es intuitiva y muy útil.",
+      },
+      {
+        img: "/uploads/cliente3.jpg",
+        name: "Carlos López",
+        role: "Director Técnico",
+        text: "Gracias a Irricrops, hemos mejorado la eficiencia del riego y reducido costos operativos significativamente.",
+      },
+    ]}
+  />
+
   <GridCardsSection
     title="Conexiones"
-    subtitle="Conectamos tus datos"
-    items={conections}
+    subtitle="Unifica y organiza toda la información en una plataforma web,  aprovechando la tecnología instalada en el campo."
+    items={connections}
   />
 
   <SlideCardsSection

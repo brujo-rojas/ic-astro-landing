@@ -1,0 +1,153 @@
+---
+import "../../styles/components/AeroCardsSection.scss";
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  items: {
+    id: string;
+    logo?: string;
+    name?: string;
+    url?: string;
+    label?: string;
+  }[];
+}
+
+const { title = "", subtitle = "", items } = Astro.props;
+const total = items.length;
+let current = 0;
+
+function getStackProps(idx: number, current: number, total: number) {
+  const stackPos = (idx - current + total) % total;
+  if (stackPos === 0) {
+    return {
+      classes: "card-slide card-visible",
+      style: "",
+    };
+  } else if (stackPos > 0 && stackPos <= 3) {
+    return {
+      classes: `card-slide card-stack-${stackPos}`,
+      style: "",
+    };
+  } else {
+    return {
+      classes: "card-slide card-hidden",
+      style: "",
+    };
+  }
+}
+
+const cardsWithProps = items.map((item, idx) => ({
+  ...item,
+  ...getStackProps(idx, current, total),
+}));
+---
+
+<section class="py-16 bg-gray-200 relative overflow-hidden">
+  <div class="container">
+    <div class="flex flex-col items-center mb-6">
+      <h2
+        class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-500 tracking-tight text-center"
+      >
+        {title}
+      </h2>
+      {subtitle && <h3 class="text-gray-400 text-xl">{subtitle}</h3>}
+    </div>
+    <div class="flex flex-col md:flex-row gap-12 items-start mt-12">
+      <div class="w-full md:w-1/2">
+        <slot />
+      </div>
+      <div
+        id="aero-slider"
+        class="relative flex flex-col items-center w-full md:w-1/2"
+        aria-label="slider"
+      >
+        <div
+          class="relative w-full h-[300px] flex items-center justify-center mt-10"
+        >
+          <button
+            id="prev-btn"
+            class="slide-btn absolute -left-4 z-40 px-3 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition shadow"
+            aria-label="Anterior"
+            type="button"
+            disabled={total < 2}
+            style="top: 50%; transform: translateY(-50%);"
+          >
+            &#8592;
+          </button>
+          {
+            cardsWithProps.map((item, idx) => (
+              <div
+                class={item.classes}
+                data-idx={idx}
+                aria-hidden={item.classes !== "card-slide card-visible"}
+              >
+                <div class="card-content">
+                  {item.logo && (
+                    <img
+                      class="card-img"
+                      src={item.logo}
+                      alt={item.name || item.label || "Logo"}
+                      title={item.name || item.label || ""}
+                    />
+                  )}
+                  {item.label && <span class="card-label">{item.label}</span>}
+                </div>
+              </div>
+            ))
+          }
+          <button
+            id="next-btn"
+            class="slide-btn absolute -right-4 z-40 px-3 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition shadow"
+            aria-label="Siguiente"
+            type="button"
+            disabled={total < 2}
+            style="top: 50%; transform: translateY(-50%);"
+          >
+            &#8594;
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" is:inline>
+      let current = 0;
+      const cards = document.querySelectorAll("#aero-slider .card-slide");
+      const prev = document.getElementById("prev-btn");
+      const next = document.getElementById("next-btn");
+
+      function show(idx) {
+        cards.forEach((c, i) => {
+          const stackPos = (i - idx + cards.length) % cards.length;
+          c.className =
+            stackPos === 0
+              ? "card-slide card-visible"
+              : stackPos === 1
+                ? "card-slide card-stack-1"
+                : stackPos === 2
+                  ? "card-slide card-stack-2"
+                  : stackPos === 3
+                    ? "card-slide card-stack-3"
+                    : "card-slide card-hidden";
+          c.setAttribute("aria-hidden", stackPos !== 0);
+        });
+      }
+
+      prev?.addEventListener("click", () => {
+        current = (current - 1 + cards.length) % cards.length;
+        show(current);
+      });
+      next?.addEventListener("click", () => {
+        current = (current + 1) % cards.length;
+        show(current);
+      });
+
+      show(current);
+
+      // AUTOPLAY: cada 1 segundo pasa a la siguiente imagen
+      setInterval(() => {
+        current = (current + 1) % cards.length;
+        show(current);
+      }, 5000);
+    </script>
+  </div>
+</section>

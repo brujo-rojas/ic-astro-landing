@@ -1,0 +1,109 @@
+---
+export interface Opinion {
+  img: string;
+  text: string;
+  name: string;
+  role: string;
+}
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  opinions: Opinion[];
+}
+
+const { title = "", subtitle = "", opinions = [] } = Astro.props;
+---
+
+<section class="py-16 bg-gray-100">
+  <div class="container mx-auto">
+    {
+      title && (
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-700 mb-2">
+          {title}
+        </h2>
+      )
+    }
+    {
+      subtitle && (
+        <p class="text-lg text-center text-gray-500 mb-8">{subtitle}</p>
+      )
+    }
+    <div class="relative max-w-2xl mx-auto">
+      <button
+        id="prev-opinion"
+        class="absolute -left-6 top-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-full p-3 shadow-lg hover:bg-gray-200 transition z-10 flex items-center justify-center w-12 h-12"
+        aria-label="Anterior"
+        type="button"
+      >
+        &#8592;
+      </button>
+      <div
+        id="opinion-slider"
+        class="overflow-hidden relative h-[260px] bg-white rounded-2xl shadow-xl"
+      >
+        <div
+          class="flex transition-transform duration-500"
+          id="opinion-track"
+          style="transform: translateX(0);"
+        >
+          {
+            opinions.map((op, idx) => (
+              <div
+                class="flex flex-row items-center gap-6 min-w-full p-8"
+                style="height: 260px;"
+                data-idx={idx}
+              >
+                <div class="flex flex-row items-center gap-6 w-full h-full">
+                  <img
+                    src={op.img}
+                    alt={op.name}
+                    class="w-20 h-20 rounded-full object-cover border-4 border-primary-100 shadow flex-shrink-0"
+                    loading="lazy"
+                  />
+                  <div class="flex flex-col items-start text-left">
+                    <blockquote class="italic text-lg text-gray-700 mb-4">
+                      &ldquo;{op.text}&rdquo;
+                    </blockquote>
+                    <div class="font-semibold text-primary-700">{op.name}</div>
+                    <div class="text-gray-500 text-sm">{op.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <button
+        id="next-opinion"
+        class="absolute -right-6 top-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-full p-3 shadow-lg hover:bg-gray-200 transition z-10 flex items-center justify-center w-12 h-12"
+        aria-label="Siguiente"
+        type="button"
+      >
+        &#8594;
+      </button>
+    </div>
+  </div>
+  <script type="module" is:inline>
+    const track = document.getElementById("opinion-track");
+    const prev = document.getElementById("prev-opinion");
+    const next = document.getElementById("next-opinion");
+    const slides = document.querySelectorAll("#opinion-track > div");
+    let current = 0;
+
+    function show(idx) {
+      const offset = -idx * 100;
+      track.style.transform = `translateX(${offset}%)`;
+    }
+
+    prev?.addEventListener("click", () => {
+      current = (current - 1 + slides.length) % slides.length;
+      show(current);
+    });
+    next?.addEventListener("click", () => {
+      current = (current + 1) % slides.length;
+      show(current);
+    });
+
+    show(current);
+  </script>
+</section>

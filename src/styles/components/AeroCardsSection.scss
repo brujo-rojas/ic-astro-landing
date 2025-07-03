@@ -1,0 +1,79 @@
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-500: #6b7280;
+$gray-600: #374151;
+$blue-400: #60a5fa;
+
+.card-slide {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  display: flex;
+  transition: all 0.5s;
+
+  &.card-visible {
+    opacity: 1;
+    z-index: 30;
+    transform: scale(1);
+    top: 0;
+    pointer-events: auto;
+  }
+  @for $i from 1 through 3 {
+    &.card-stack-#{$i} {
+      z-index: 30 - ($i * 5);
+      transform: scale(1 - $i * 0.05);
+      top: -18px * $i;
+      left: 12px * $i;
+      pointer-events: none;
+    }
+  }
+  &.card-hidden {
+    opacity: 0;
+    z-index: 0;
+    transform: scale(0.8);
+    top: 0;
+    pointer-events: none;
+  }
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  aspect-ratio: 16/9;
+
+  .card-img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .card-label {
+    color: $gray-600;
+    font-size: 1.25rem;
+    text-align: center;
+  }
+}
+
+.slide-btn {
+  &:active {
+    background-color: $gray-300;
+    transform: translateY(3px) scale(0.97);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  &:focus {
+    outline: 2px solid $blue-400;
+    outline-offset: 2px;
+  }
+}

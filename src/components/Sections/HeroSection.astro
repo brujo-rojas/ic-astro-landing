@@ -3,10 +3,6 @@ export interface Props {
   title?: string;
   subtitle?: string;
   backgroundImage?: string;
-  ctaText?: string;
-  ctaLink?: string;
-  secondaryCtaText?: string;
-  secondaryCtaLink?: string;
 }
 
 const {
@@ -19,27 +15,31 @@ const {
 <section
   class="relative min-h-[200px] h-[50vh] flex items-center bg-cover pt-30"
   style={`
-    background-image: linear-gradient(to right , rgba(27,94,32,0.8) , rgba(27,94,32,0.6) , rgba(27, 94, 32, 0.4), transparent, transparent, transparent), url(${backgroundImage}); ;
+    background-image: linear-gradient(to right , rgba(27,94,32,0.8) , rgba(27,94,32,0.6) , rgba(27, 94, 32, 0.4), transparent, transparent, transparent), url(${backgroundImage});
     background-position: center 70%;
   `}
 >
   <div
     class="absolute top-0 left-0 w-full h-full z-1"
     style={`
-    mask: linear-gradient(to right, black, black, rgba(0, 0, 0, 0.5), transparent, transparent);
-    backdrop-filter: blur(128px) saturate(1.25);
+      mask: linear-gradient(to right, black, black, rgba(0, 0, 0, 0.5), transparent, transparent);
+      backdrop-filter: blur(128px) saturate(1.25);
     `}
   >
   </div>
 
   <div class="container z-2 relative">
-    <div class="max-w-3xl text-white">
-      <img
-        src="/uploads/horizontal-white.png"
-        alt={title}
-        class="mb-2 w-64 md:w-64"
-      />
-      <p class="text-xl md:text-2xl mb-8">{subtitle}</p>
+    <div class="flex flex-row items-center justify-between w-full">
+      <div class="max-w-3xl text-white flex-1">
+        <img
+          src="/uploads/horizontal-white.png"
+          alt={title}
+          class="mb-6 w-64 md:w-96"
+        />
+        <p class="text-xl md:text-2xl mb-8">{subtitle}</p>
+
+        <slot />
+      </div>
     </div>
   </div>
 </section>
