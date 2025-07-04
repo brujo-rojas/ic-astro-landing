@@ -2,16 +2,24 @@
 import Navigation from "./Navigation.astro";
 ---
 
-<header class="sticky top-0 z-[70] w-full bg-white/80 backdrop-blur-md shadow-xl">
-  <div class="container flex items-center justify-between h-20">
+<header
+  class="sticky top-0 z-[70] w-full bg-white/80 backdrop-blur-md shadow-xl"
+>
+  <div class="container flex items-center justify-between h-16">
     <a href="/">
-      <img
-        src="/uploads/horizontal-grey.png"
-        alt="Irricrops"
-        class="h-10 md:h-12"
-      />
+      <img src="/uploads/horizontal-grey.png" alt="Irricrops" class="h-10" />
     </a>
 
-    <Navigation />
+    <div class="flex items-center gap-8">
+      <Navigation />
+      <a
+        href="https://app.irricrops.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white font-semibold transition-colors text-sm shadow"
+      >
+        Ir a la App
+      </a>
+    </div>
   </div>
 </header>

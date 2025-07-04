@@ -18,8 +18,8 @@ const currentPath = Astro.url.pathname;
 ---
 
 <!-- Desktop Navigation -->
-<nav class="hidden lg:block">
-  <ul class="flex items-center space-x-2">
+<nav class="hidden lg:block h-full mt-3">
+  <ul class="flex items-end space-x-2 h-full">
     {
       navItems.map((item) => {
         const isActive =
@@ -27,19 +27,21 @@ const currentPath = Astro.url.pathname;
           (item.href !== "/" && currentPath.startsWith(item.href));
 
         return (
-          <li>
+          <div class="flex items-end">
             <a
               href={item.href}
-              class={`text-base font-medium transition-colors px-4 py-2 rounded-full ${
+              class={`flex items-center h-full text-base font-medium transition-colors px-4 py-2 rounded-none border-b-4 border-transparent ${
                 isActive
-                  ? "bg-primary-500 text-white shadow font-semibold border border-primary-800"
+                  ? "border-green-600 text-green-700 font-semibold bg-transparent shadow-none"
                   : "text-gray-700 hover:text-primary-600"
               }`}
               aria-current={isActive ? "page" : undefined}
             >
+              <span class="mb-2">
               {item.text}
+              </span>
             </a>
-          </li>
+          </div>
         );
       })
     }
@@ -127,6 +129,12 @@ const currentPath = Astro.url.pathname;
   /* Active state styling */
   #mobile-menu a[aria-current="page"] {
     font-weight: 600;
+  }
+  .lg\:block .border-green-600 {
+    border-bottom-width: 4px !important;
+    border-color: #16a34a !important;
+    background: transparent !important;
+    border-radius: 0 !important;
   }
 </style>
 
