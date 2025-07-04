@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WideImage from "../components/Sections/WideImage.astro";
+import Button from "../components/UI/Button.astro";
+---
+
+<BaseLayout
+  title="Términos de Servicio - Irricrops SaaS"
+  description="Lee los términos y condiciones de uso de Irricrops, la plataforma SaaS que unifica y ordena datos agrícolas de múltiples fuentes."
+>
+  <WideImage
+    title="Términos de Servicio"
+    subtitle="Condiciones de uso de la plataforma Irricrops"
+    backgroundImage="/uploads/img4.jpg"
+  />
+
+  <section class="py-16">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Condiciones Generales de Uso
+        </h2>
+        <p class="text-xl text-gray-700 mb-6">
+          Estos Términos de Servicio regulan el acceso y uso de la plataforma
+          Irricrops SaaS. Al utilizar nuestros servicios, aceptas cumplir con
+          estas condiciones. Si no estás de acuerdo, por favor no utilices la
+          plataforma.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="container">
+      <div class="max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold mb-4">1. Uso de la Plataforma</h3>
+        <ul class="list-disc list-inside text-gray-700 mb-8">
+          <li>
+            El usuario debe proporcionar información veraz y mantener la
+            confidencialidad de sus credenciales de acceso.
+          </li>
+          <li>
+            Está prohibido el uso de la plataforma para actividades ilícitas,
+            fraudulentas o que vulneren derechos de terceros.
+          </li>
+          <li>
+            Irricrops puede suspender o cancelar cuentas que incumplan estos
+            términos o pongan en riesgo la seguridad del sistema.
+          </li>
+        </ul>
+        <h3 class="text-2xl font-bold mb-4">2. Propiedad Intelectual</h3>
+        <ul class="list-disc list-inside text-gray-700 mb-8">
+          <li>
+            El software, diseño, marcas y contenidos de Irricrops son propiedad
+            exclusiva de Irricrops SpA o sus licenciantes.
+          </li>
+          <li>
+            El usuario conserva la titularidad de los datos que suba o integre,
+            pero otorga a Irricrops el derecho de procesarlos para la
+            prestación del servicio.
+          </li>
+        </ul>
+        <h3 class="text-2xl font-bold mb-4">3. Privacidad y Protección de Datos</h3>
+        <ul class="list-disc list-inside text-gray-700 mb-8">
+          <li>
+            El tratamiento de datos personales se rige por nuestra{" "}
+            <a
+              href="/privacy-policy"
+              class="text-primary-600 hover:text-primary-700 underline"
+              >Política de Privacidad</a
+            >.
+          </li>
+          <li>
+            El usuario es responsable de contar con las autorizaciones necesarias
+            para integrar datos de terceros.
+          </li>
+        </ul>
+        <h3 class="text-2xl font-bold mb-4">4. Responsabilidad</h3>
+        <ul class="list-disc list-inside text-gray-700 mb-8">
+          <li>
+            Irricrops no garantiza la disponibilidad ininterrumpida del servicio
+            ni la ausencia de errores, pero se compromete a realizar esfuerzos
+            razonables para su correcto funcionamiento.
+          </li>
+          <li>
+            La plataforma puede contener enlaces o integraciones con servicios de
+            terceros, sobre los cuales Irricrops no tiene control ni asume
+            responsabilidad.
+          </li>
+          <li>
+            El usuario es responsable del uso que haga de la información y
+            análisis generados en la plataforma.
+          </li>
+        </ul>
+        <h3 class="text-2xl font-bold mb-4">5. Modificaciones y Vigencia</h3>
+        <ul class="list-disc list-inside text-gray-700 mb-8">
+          <li>
+            Irricrops se reserva el derecho de modificar estos términos en
+            cualquier momento. Los cambios serán notificados a través de la
+            plataforma o por correo electrónico.
+          </li>
+          <li>
+            El uso continuado de la plataforma implica la aceptación de los
+            términos actualizados.
+          </li>
+        </ul>
+        <h3 class="text-2xl font-bold mb-4">6. Contacto y Soporte</h3>
+        <ul class="list-disc list-inside text-gray-700 mb-8">
+          <li>
+            Para consultas sobre estos términos o el uso de la plataforma, puedes
+            contactarnos a través del formulario de contacto.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="py-20 bg-cover bg-center text-white"
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/uploads/img5.jpg)"
+  >
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+          ¿Tienes dudas o necesitas ayuda?
+        </h2>
+        <p class="text-xl mb-8">
+          Si tienes preguntas sobre los términos de servicio o el uso de
+          Irricrops, contáctanos y nuestro equipo te responderá a la brevedad.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <Button href="/contact" variant="primary" size="lg">
+            Contactar
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

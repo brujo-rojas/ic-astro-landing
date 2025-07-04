@@ -1,44 +1,44 @@
 import { format, parseISO } from "date-fns";
+import { es } from "date-fns/locale";
 
 /**
- * Format a date in a human-readable format
- * @param {Date|string} date The date to format
- * @param {string} formatStr The format string (default: 'MMMM d, yyyy')
- * @returns {string} The formatted date
+ * Formatea una fecha en formato legible en español
+ * @param {Date|string} date La fecha a formatear
+ * @param {string} formatStr El formato (por defecto: 'd 'de' MMMM 'de' yyyy')
+ * @returns {string}
  */
-export function formatDate(date, formatStr = "MMMM d, yyyy") {
+export function formatDate(date, formatStr = "d 'de' MMMM 'de' yyyy") {
   if (!date) return "";
-  
-  // If date is a string, parse it
+
   const dateObj = typeof date === "string" ? parseISO(date) : date;
-  
-  return format(dateObj, formatStr);
+
+  return format(dateObj, formatStr, { locale: es });
 }
 
 /**
- * Check if a date is in the future
- * @param {Date|string} date The date to check
- * @returns {boolean} True if the date is in the future
+ * Verifica si una fecha es en el futuro
+ * @param {Date|string} date La fecha a verificar
+ * @returns {boolean} True si la fecha es en el futuro
  */
 export function isFutureDate(date) {
   if (!date) return false;
-  
-  // If date is a string, parse it
+
+  // Si la fecha es un string, parsearla
   const dateObj = typeof date === "string" ? parseISO(date) : date;
-  
+
   return dateObj > new Date();
 }
 
 /**
- * Check if a date is in the past
- * @param {Date|string} date The date to check
- * @returns {boolean} True if the date is in the past
+ * Verifica si una fecha es en el pasado
+ * @param {Date|string} date La fecha a verificar
+ * @returns {boolean} True si la fecha es en el pasado
  */
 export function isPastDate(date) {
   if (!date) return false;
-  
-  // If date is a string, parse it
+
+  // Si la fecha es un string, parsearla
   const dateObj = typeof date === "string" ? parseISO(date) : date;
-  
+
   return dateObj < new Date();
 }
